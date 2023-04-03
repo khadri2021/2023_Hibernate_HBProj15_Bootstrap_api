@@ -5,13 +5,13 @@ import org.hibernate.Transaction;
 
 import com.khadri.hibernate.boot.entities.Customer;
 import com.khadri.hibernate.boot.entities.Order;
-import com.khadri.hibernate.boot.registry.BootRegistryUtil;
+import com.khadri.hibernate.boot.registry.util.BootServiceRegistryUtil;
+import com.khadri.hibernate.boot.registry.util.StandardServiceRegUtil;
 
 public class Main {
 
 	public static void main(String[] args) {
-
-		Session session = BootRegistryUtil.getSession();
+		Session session = StandardServiceRegUtil.getSession();
 
 		Transaction txn = session.beginTransaction();
 
@@ -27,7 +27,7 @@ public class Main {
 
 		txn.commit();
 
-		BootRegistryUtil.closeObjects();
+		StandardServiceRegUtil.closeObjects();
 
 	}
 }
