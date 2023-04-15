@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Properties;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.SharedCacheMode;
 import javax.persistence.ValidationMode;
@@ -19,7 +20,7 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 
 public class JpaBootStrapEntityManagerUtil {
 
-	public static EntityManagerFactory getEntityMagerFactory() {
+	public static EntityManager getEntityMager() {
 
 		Properties props = new Properties();
 		try {
@@ -32,7 +33,7 @@ public class JpaBootStrapEntityManagerUtil {
 				.createContainerEntityManagerFactory(
 						createPersistenceUintInfo(), props);
 
-		return emf;
+		return emf.createEntityManager();
 	}
 
 	public static PersistenceUnitInfo createPersistenceUintInfo() {
